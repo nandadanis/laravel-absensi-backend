@@ -11,20 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attendances', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            //user_id (foreign key to users)
+            //user_id is foreign key from users table
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            //date
-            $table->date('date');
-            //time_in
-            $table->time('time_in');
-            //time_out
-            $table->time('time_out')->nullable();
-            //latlon_in
-            $table->string('latlon_in');
-            //latlon_out
-            $table->string('latlon_out')->nullable();
+            //date permission is a date column
+            $table->date('date_permission');
+            //reason
+            $table->text('reason');
+            //image nullable
+            $table->string('image')->nullable();
+            //is_approved is a boolean column
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('permissions');
     }
 };

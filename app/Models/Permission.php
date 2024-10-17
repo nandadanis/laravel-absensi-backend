@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Attendance extends Model
+class Permission extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'date',
-        'time_in',
-        'time_out',
-        'latlon_in',
-        'latlon_out',
+        'date_permission',
+        'reason',
+        'image',
+        'is_approved',
     ];
 
     public function user()
